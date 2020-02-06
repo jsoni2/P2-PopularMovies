@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ProgressBar;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,10 +19,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+        mProgressBar.setVisibility(View.INVISIBLE);
     }
 
     // AsyncTask
-    public class FetchMovies extends AsyncTask<Void, Void, Void>{
+    public class FetchMovies extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected Void doInBackground(Void... voids) {
