@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.janak.popularmovies.model.Movie;
 
-import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.IOUtil;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,7 +27,7 @@ public class NetworkUtils {
             connection.connect();
 
             InputStream inputStream = connection.getInputStream(); //reading from the object
-            String results = IOUtils.toString(inputStream);  //IOUtils to convert inputstream objects into Strings type
+            String results = IOUtil.toString(inputStream);  //IOUtils to convert inputstream objects into Strings type
             parseJson(results,movies);
             inputStream.close();
 
