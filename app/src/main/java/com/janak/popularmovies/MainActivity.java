@@ -4,8 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.widget.ProgressBar;
+
+import butterknife.BindView;
 
 public class MainActivity extends AppCompatActivity {
+
+    @BindView(R.id.pb_loading)
+    ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
