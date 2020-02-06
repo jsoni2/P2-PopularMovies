@@ -30,5 +30,17 @@ public class MainActivity extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
             return null;
         }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            mProgressBar.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            mProgressBar.setVisibility(View.INVISIBLE);
+        }
     }
 }
