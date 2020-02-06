@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
             mPopularList = new ArrayList<>();
             mTopTopRatedList = new ArrayList<>();
-            
+
             return null;
         }
 
