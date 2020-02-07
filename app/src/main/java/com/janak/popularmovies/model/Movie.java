@@ -93,4 +93,20 @@ public class Movie implements Serializable {
     public void setPosterPath(String posterPath) {
         this.posterPath = posterPath;
     }
+
+    @Override
+    public String toString() {
+        return "{\"Movie\":{"
+                + "\"id\":\"" + id + "\""
+                + ", \"voteAverage\":\"" + voteAverage + "\""
+                + ", \"voteCount\":\"" + voteCount + "\""
+                + ", \"originalTitle\":\"" + originalTitle + "\""
+                + ", \"title\":\"" + title + "\""
+                + ", \"popularity\":\"" + popularity + "\""
+                + ", \"backdropPath\":\"" + backdropPath + "\""
+                + ", \"overview\":\"" + overview + "\""
+                + ", \"releaseDate\":\"" + releaseDate + "\""
+                + ", \"posterPath\":\"" + posterPath + "\""
+                + "}}";
+    }
 }

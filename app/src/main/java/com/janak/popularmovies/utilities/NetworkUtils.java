@@ -51,13 +51,13 @@ public class NetworkUtils {
                 movie.setId(jsonObject.getInt("id"));
                 movie.setVoteAverage(jsonObject.getInt("vote_average"));
                 movie.setVoteCount(jsonObject.getInt("vote_count"));
-                movie.setOriginalTitle(jsonObject.getString("original_title"));
-                movie.setTitle(jsonObject.getString("title"));
+                movie.setOriginalTitle(jsonObject.optString("original_title"));
+                movie.setTitle(jsonObject.optString("title"));
                 movie.setPopularity(jsonObject.getDouble("popularity"));
-                movie.setBackdropPath(jsonObject.getString("backdrop_path"));
-                movie.setOverview(jsonObject.getString("overview"));
-                movie.setReleaseDate(jsonObject.getString("release_date"));
-                movie.setPosterPath(jsonObject.getString("poster_path"));
+                movie.setBackdropPath(jsonObject.optString("backdrop_path"));
+                movie.setOverview(jsonObject.optString("overview"));
+                movie.setReleaseDate(jsonObject.optString("release_date"));
+                movie.setPosterPath(jsonObject.optString("poster_path"));
                 //Adding a new movie object into ArrayList
                 movies.add(movie);
             }
