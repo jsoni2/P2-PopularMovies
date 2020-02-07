@@ -6,8 +6,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.janak.popularmovies.model.Movie;
+import com.janak.popularmovies.utilities.NetworkUtils;
 
 import java.util.ArrayList;
 
@@ -22,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     String popularMoviesURL;
     String topRatedMoviesURL;
 
-    String YOUR_API_KEY = "67abda4d931f7a093afa16b89a87dcf9";
+    String YOUR_API_KEY = BuildConfig.YOUR_API_KEY;
 
     ArrayList<Movie> mPopularList;
     ArrayList<Movie> mTopTopRatedList;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         mProgressBar.setVisibility(View.INVISIBLE);
+        new FetchMovies().execute();
     }
 
     // AsyncTask
@@ -46,6 +49,17 @@ public class MainActivity extends AppCompatActivity {
 
             mPopularList = new ArrayList<>();
             mTopTopRatedList = new ArrayList<>();
+            try {
+                if (NetworkUtils.networkStatus(MainActivity.this)){
+                    mPopularList = NetworkUtils.fetchData(popularMoviesURL);
+                    mTopTopRatedList = NetworkUtils.fetchData(topRatedMoviesURL);
+                    Toast.makeText(MainActivity.this, "Internet Connection", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
             return null;
         }

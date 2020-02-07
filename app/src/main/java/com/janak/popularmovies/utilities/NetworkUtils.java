@@ -1,5 +1,7 @@
 package com.janak.popularmovies.utilities;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.util.Log;
 
 import com.janak.popularmovies.model.Movie;
@@ -63,5 +65,10 @@ public class NetworkUtils {
             e.printStackTrace();
             Log.e(TAG, "Erro occurred during JSON Parsing", e);
         }
+    }
+
+    public static Boolean networkStatus(Context context) {
+        ConnectivityManager mConnectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        return mConnectivityManager.getActiveNetworkInfo() != null && mConnectivityManager.getActiveNetworkInfo().isConnected();
     }
 }
