@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -87,9 +86,9 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            popularMoviesURL = "http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key="+YOUR_API_KEY;
+            popularMoviesURL = "https://api.themoviedb.org/3/movie/popular?api_key="+YOUR_API_KEY;
 
-            topRatedMoviesURL = "http://api.themoviedb.org/3/discover/movie?sort_by=vote_average.desc&api_key="+YOUR_API_KEY;
+            topRatedMoviesURL = "https://api.themoviedb.org/3/movie/top_rated?api_key="+YOUR_API_KEY;
 
             mPopularList = new ArrayList<>();
             mTopRatedList = new ArrayList<>();
