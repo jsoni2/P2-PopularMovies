@@ -66,9 +66,11 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.pop_movies) {
+            getSupportActionBar().setTitle("Popular Movies");
             refreshList(mPopularList);
         }
         if (id == R.id.top_movies) {
+            getSupportActionBar().setTitle("Top Rated Movies");
             refreshList(mTopRatedList);
         }
         return super.onOptionsItemSelected(item);
@@ -110,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            getSupportActionBar().setTitle("Popular Movies");
             mProgressBar.setVisibility(View.VISIBLE);
         }
 
