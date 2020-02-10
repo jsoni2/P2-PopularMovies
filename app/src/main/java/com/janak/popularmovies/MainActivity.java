@@ -1,17 +1,17 @@
 package com.janak.popularmovies;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.janak.popularmovies.model.Movie;
 import com.janak.popularmovies.utilities.NetworkUtils;
@@ -46,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
         mProgressBar.setVisibility(View.INVISIBLE);
 
         new FetchMovies().execute();
+
+        mGridView.setOnItemClickListener((adapterView, view, i, l) -> {
+            Toast.makeText(MainActivity.this, adapterView.getItemAtPosition(i).toString(), Toast.LENGTH_SHORT).show();
+        });
     }
 
     @Override
