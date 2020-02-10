@@ -1,10 +1,13 @@
 package com.janak.popularmovies;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ProgressBar;
@@ -38,10 +41,37 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         ButterKnife.bind(this);
         mProgressBar.setVisibility(View.INVISIBLE);
+
         new FetchMovies().execute();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.pop_movies) {
+            refreshList(mPopularList);
+        }
+        if (id == R.id.top_movies) {
+            refreshList(mTopRatedList);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void refreshList(ArrayList<Movie> list) {
+        MovieAdapter adapter = new MovieAdapter(MainActivity.this, list);
+        mGridView.invalidateViews();
+        mGridView.setAdapter(adapter);
+    }
+
 
     // AsyncTask
     public class FetchMovies extends AsyncTask<Void, Void, Void> {
@@ -58,14 +88,6 @@ public class MainActivity extends AppCompatActivity {
                 if (NetworkUtils.networkStatus(MainActivity.this)){
                     mPopularList = NetworkUtils.fetchData(popularMoviesURL);
                     mTopRatedList = NetworkUtils.fetchData(topRatedMoviesURL);
-                    for (Movie movie: mPopularList) {
-                        Log.d( "doInBackground:Popular", movie.toString());
-                    }
-                    Log.d( "doInBackground:Popular", String.valueOf(mPopularList.size()));
-                    for (Movie movie: mTopRatedList) {
-                        Log.d( "doInBackground:TopRated", movie.toString());
-                    }
-                    Log.d( "doInBackground:TopRated", String.valueOf(mTopRatedList.size()));
 
                 } else {
                     Toast.makeText(MainActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
@@ -86,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+            refreshList(mPopularList);
             mProgressBar.setVisibility(View.INVISIBLE);
         }
     }

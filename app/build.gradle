@@ -48,5 +48,4 @@ dependencies {
 
     implementation 'commons-io:commons-io:20030203.000550'
 
-//    implementation 'org.apache.directory.studio:org.apache.commons.io:2.4'
 }

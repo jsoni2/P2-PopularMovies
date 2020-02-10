@@ -21,33 +21,34 @@ public class NetworkUtils {
     private static final String TAG = NetworkUtils.class.getSimpleName();
 
     public static ArrayList<Movie> fetchData(String url) throws IOException {
-        ArrayList<Movie> movies = new ArrayList<Movie>();
+        ArrayList<Movie> mMovieList = new ArrayList<Movie>();
         try {
 
-            URL new_url = new URL(url); //create a url from a String
-            HttpURLConnection connection = (HttpURLConnection) new_url.openConnection(); //Opening a http connection  to the remote object
+            URL new_url = new URL(url);
+            HttpURLConnection connection = (HttpURLConnection) new_url.openConnection();
             connection.connect();
 
-            InputStream inputStream = connection.getInputStream(); //reading from the object
-            String results = IOUtil.toString(inputStream);  //IOUtils to convert inputstream objects into Strings type
-            parseJson(results,movies);
+            InputStream inputStream = connection.getInputStream();
+            String mResultString = IOUtil.toString(inputStream);
+            parseJson(mResultString, mMovieList);
             inputStream.close();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return movies;
+        return mMovieList;
     }
 
-    private static void parseJson(String results, ArrayList<Movie> movies) {
+    private static void parseJson(String mResultString, ArrayList<Movie> mMovieList) {
         try {
-            JSONObject mainObject = new JSONObject(results);
+            JSONObject mainObject = new JSONObject(mResultString);
 
-            JSONArray resArray = mainObject.getJSONArray("results"); //Getting the results object
-            for (int i = 0; i < resArray.length(); i++) {
-                JSONObject jsonObject = resArray.getJSONObject(i);
-                Movie movie = new Movie(); //New Movie object
+            JSONArray resultArray = mainObject.getJSONArray("results"); //Getting the results object
+            for (int i = 0; i < resultArray.length(); i++) {
+                JSONObject jsonObject = resultArray.getJSONObject(i);
+                Movie movie = new Movie();
+
                 movie.setId(jsonObject.getInt("id"));
                 movie.setVoteAverage(jsonObject.getInt("vote_average"));
                 movie.setVoteCount(jsonObject.getInt("vote_count"));
@@ -58,8 +59,8 @@ public class NetworkUtils {
                 movie.setOverview(jsonObject.optString("overview"));
                 movie.setReleaseDate(jsonObject.optString("release_date"));
                 movie.setPosterPath(jsonObject.optString("poster_path"));
-                //Adding a new movie object into ArrayList
-                movies.add(movie);
+
+                mMovieList.add(movie);
             }
         } catch (JSONException e) {
             e.printStackTrace();
