@@ -1,8 +1,9 @@
 package com.janak.popularmovies.model;
 
-import java.io.Serializable;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Movie implements Serializable {
+public class Movie implements Parcelable {
     private int mId;
     private  int mVoteAverage;
     private int mVoteCount;
@@ -13,6 +14,54 @@ public class Movie implements Serializable {
     private String mOverview;
     private String mReleaseDate;
     private String mPosterPath;
+
+    public Movie(Parcel in) {
+        mId = in.readInt();
+        mVoteAverage = in.readInt();
+        mVoteCount = in.readInt();
+        mOriginalTitle = in.readString();
+        mTitle = in.readString();
+        mPopularity = in.readDouble();
+        mBackdropPath = in.readString();
+        mOverview = in.readString();
+        mReleaseDate = in.readString();
+        mPosterPath = in.readString();
+    }
+
+    public Movie() {
+
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(mId);
+        dest.writeInt(mVoteAverage);
+        dest.writeInt(mVoteCount);
+        dest.writeString(mOriginalTitle);
+        dest.writeString(mTitle);
+        dest.writeDouble(mPopularity);
+        dest.writeString(mBackdropPath);
+        dest.writeString(mOverview);
+        dest.writeString(mReleaseDate);
+        dest.writeString(mPosterPath);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
+        @Override
+        public Movie createFromParcel(Parcel in) {
+            return new Movie(in);
+        }
+
+        @Override
+        public Movie[] newArray(int size) {
+            return new Movie[size];
+        }
+    };
 
     public int getmId() {
         return mId;
