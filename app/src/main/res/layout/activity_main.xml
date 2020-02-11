@@ -10,7 +10,7 @@
         android:id="@+id/gv_movies_grid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:columnWidth="@dimen/gv_col_width"
+        android:columnWidth="@dimen/gv_column_width"
         android:gravity="center_horizontal"
         android:numColumns="auto_fit" />
 

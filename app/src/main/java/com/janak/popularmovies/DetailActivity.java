@@ -53,12 +53,13 @@ public class DetailActivity extends AppCompatActivity {
 
     private void displayData(Movie detailMovie) {
         getSupportActionBar().setTitle("Movie Detail");
-        mMovieTitle.setText(detailMovie.getTitle());
-        mMovieRating.setText(detailMovie.getVoteAverage() + "/10");
+
+        mMovieTitle.setText(detailMovie.getmTitle());
+        mMovieRating.setText(detailMovie.getmVoteAverage() + "/10");
         mMovieReleaseData.setText("(" + detailMovie.getReleaseYear() + ")");
-        mMovieSynopsis.setText(detailMovie.getOverview());
+        mMovieSynopsis.setText(detailMovie.getmOverview());
         Picasso.get()
-                .load(MOVIE_POSTER_BASE_URL + detailMovie.getPosterPath())
+                .load(MOVIE_POSTER_BASE_URL + detailMovie.getmPosterPath())
                 .into(mMoviePoster);
     }
 }
