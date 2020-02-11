@@ -94,6 +94,10 @@ public class Movie implements Serializable {
         this.posterPath = posterPath;
     }
 
+    public String getReleaseYear() {
+        return this.releaseDate.split("-")[0];
+    }
+
     @Override
     public String toString() {
         return "{\"Movie\":{"

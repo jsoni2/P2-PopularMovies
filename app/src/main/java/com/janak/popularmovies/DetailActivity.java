@@ -25,7 +25,7 @@ public class DetailActivity extends AppCompatActivity {
     @BindView(R.id.movie_synopsis)
     TextView mMovieSynopsis;
 
-    @BindView(R.id.release_date)
+    @BindView(R.id.movie_released)
     TextView mMovieReleaseData;
 
     @BindView(R.id.movie_poster)
@@ -56,8 +56,8 @@ public class DetailActivity extends AppCompatActivity {
     private void displayData(Movie detailMovie) {
         getSupportActionBar().setTitle("Movie Detail");
         mMovieTitle.setText(detailMovie.getTitle());
-        mMovieRating.setText(String.valueOf(detailMovie.getVoteAverage()));
-        mMovieReleaseData.setText(detailMovie.getReleaseDate());
+        mMovieRating.setText(detailMovie.getVoteAverage() + "/10");
+        mMovieReleaseData.setText("(" + detailMovie.getReleaseYear() + ")");
         mMovieSynopsis.setText(detailMovie.getOverview());
         Picasso.get().load(MOVIE_BASE_URL + detailMovie.getPosterPath()).into(mMoviePoster);
     }
