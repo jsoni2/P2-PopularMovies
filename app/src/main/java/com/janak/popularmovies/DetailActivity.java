@@ -15,22 +15,17 @@ import butterknife.ButterKnife;
 
 public class DetailActivity extends AppCompatActivity {
 
+    public static final String MOVIE_POSTER_BASE_URL = "https://image.tmdb.org/t/p/w342";
     @BindView(R.id.movie_title)
     TextView mMovieTitle;
-
     @BindView(R.id.movie_rating)
     TextView mMovieRating;
-
     @BindView(R.id.movie_synopsis)
     TextView mMovieSynopsis;
-
     @BindView(R.id.movie_released)
     TextView mMovieReleaseData;
-
     @BindView(R.id.movie_poster)
     ImageView mMoviePoster;
-
-    public static final String MOVIE_POSTER_BASE_URL = "https://image.tmdb.org/t/p/w342";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

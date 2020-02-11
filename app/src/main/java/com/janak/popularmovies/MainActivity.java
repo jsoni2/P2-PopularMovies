@@ -88,14 +88,14 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            mPopularMoviesURL = "https://api.themoviedb.org/3/movie/popular?api_key="+YOUR_API_KEY;
+            mPopularMoviesURL = "https://api.themoviedb.org/3/movie/popular?api_key=" + YOUR_API_KEY;
 
-            mTopRatedMoviesURL = "https://api.themoviedb.org/3/movie/top_rated?api_key="+YOUR_API_KEY;
+            mTopRatedMoviesURL = "https://api.themoviedb.org/3/movie/top_rated?api_key=" + YOUR_API_KEY;
 
             mPopularMovieList = new ArrayList<>();
             mTopRatedMovieList = new ArrayList<>();
             try {
-                if (NetworkUtils.networkStatus(MainActivity.this)){
+                if (NetworkUtils.networkStatus(MainActivity.this)) {
                     mPopularMovieList = NetworkUtils.fetchData(mPopularMoviesURL);
                     mTopRatedMovieList = NetworkUtils.fetchData(mTopRatedMoviesURL);
 
