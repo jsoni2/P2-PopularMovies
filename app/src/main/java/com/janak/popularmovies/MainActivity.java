@@ -112,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            getSupportActionBar().setTitle("Popular Movies");
             mProgressBar.setVisibility(View.VISIBLE);
         }
 

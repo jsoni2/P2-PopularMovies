@@ -47,17 +47,15 @@ public class MovieAdapter extends BaseAdapter {
         RelativeLayout relativeLayout = new RelativeLayout(mContext);
         relativeLayout.setLayoutParams(new ViewGroup.LayoutParams(200, 300));
         if (convertView == null) {
-            // if it's not recycled, initialize some attributes
             imageView = new ImageView(mContext);
             imageView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-            imageView.setAdjustViewBounds(true); //!important
+            imageView.setAdjustViewBounds(true);
             relativeLayout.addView(imageView);
         } else {
             imageView = (ImageView) convertView;
         }
 
-        //load data into the ImageView using Picasso
         Picasso.get()
                 .load(MOVIE_POSTER_BASE_URL + movies.getPosterPath())
                 .placeholder(R.drawable.image_placeholder)
