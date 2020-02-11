@@ -1,8 +1,6 @@
 package com.janak.popularmovies;
 
 import android.content.Context;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -19,7 +17,7 @@ public class MovieAdapter extends BaseAdapter {
     private Context mContext;
     ArrayList<Movie> movies;
 
-    public static final String MOVIE_BASE_URL = "https://image.tmdb.org/t/p/w342";
+    public static final String MOVIE_POSTER_BASE_URL = "https://image.tmdb.org/t/p/w342";
 
     public MovieAdapter(Context mContext, ArrayList<Movie> movies) {
         this.mContext = mContext;
@@ -61,7 +59,7 @@ public class MovieAdapter extends BaseAdapter {
 
         //load data into the ImageView using Picasso
         Picasso.get()
-                .load(MOVIE_BASE_URL + movies.getPosterPath())
+                .load(MOVIE_POSTER_BASE_URL + movies.getPosterPath())
                 .placeholder(R.drawable.image_placeholder)
                 .into(imageView);
 
