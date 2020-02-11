@@ -70,6 +70,6 @@ public class NetworkUtils {
 
     public static Boolean networkStatus(Context context) {
         ConnectivityManager mConnectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        return mConnectivityManager.getActiveNetworkInfo() != null && mConnectivityManager.getActiveNetworkInfo().isConnected();
+        return mConnectivityManager.isDefaultNetworkActive();
     }
 }
