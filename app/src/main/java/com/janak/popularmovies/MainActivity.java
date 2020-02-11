@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             Movie clickedMovie = (Movie) adapterView.getItemAtPosition(i);
             Class destinationClass = DetailActivity.class;
             Intent intentThatWillStartActivity = new Intent(MainActivity.this, destinationClass);
-            intentThatWillStartActivity.putExtra("Movie", clickedMovie);
+            intentThatWillStartActivity.putExtra(getString(R.string.current_movie), clickedMovie);
             startActivity(intentThatWillStartActivity);
         });
     }
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                     mTopRatedMovieList = NetworkUtils.fetchData(mTopRatedMoviesURL);
 
                 } else {
-                    Toast.makeText(MainActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, R.string.no_internet_connection, Toast.LENGTH_SHORT).show();
                 }
             } catch (Exception e) {
                 e.printStackTrace();

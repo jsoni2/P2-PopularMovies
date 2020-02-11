@@ -42,8 +42,8 @@ public class DetailActivity extends AppCompatActivity {
         Intent intentThatStartedActivity = getIntent();
 
         if (intentThatStartedActivity != null) {
-            if (intentThatStartedActivity.hasExtra("Movie")) {
-                Movie detailMovie = (Movie) intentThatStartedActivity.getParcelableExtra("Movie");
+            if (intentThatStartedActivity.hasExtra(getString(R.string.current_movie))) {
+                Movie detailMovie = (Movie) intentThatStartedActivity.getParcelableExtra(getString(R.string.current_movie));
                 displayData(detailMovie);
             }
         }
@@ -51,7 +51,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void displayData(Movie detailMovie) {
-        getSupportActionBar().setTitle("Movie Detail");
+        getSupportActionBar().setTitle(getString(R.string.movie_detail));
 
         mMovieTitle.setText(detailMovie.getmTitle());
         mMovieRating.setText(detailMovie.getmVoteAverage() + "/10");
