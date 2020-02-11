@@ -29,13 +29,13 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.gv_movies_grid)
     GridView mGridView;
 
-    String popularMoviesURL;
-    String topRatedMoviesURL;
+    String mPopularMoviesURL;
+    String mTopRatedMoviesURL;
 
     String YOUR_API_KEY = BuildConfig.YOUR_API_KEY;
 
-    ArrayList<Movie> mPopularList;
-    ArrayList<Movie> mTopRatedList;
+    ArrayList<Movie> mPopularMovieList;
+    ArrayList<Movie> mTopRatedMovieList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +50,9 @@ public class MainActivity extends AppCompatActivity {
         mGridView.setOnItemClickListener((adapterView, view, i, l) -> {
             Movie clickedMovie = (Movie) adapterView.getItemAtPosition(i);
             Class destinationClass = DetailActivity.class;
-            Intent intent = new Intent(MainActivity.this, destinationClass);
-            intent.putExtra("Movie", clickedMovie);
-            startActivity(intent);
+            Intent intentThatWillStartActivity = new Intent(MainActivity.this, destinationClass);
+            intentThatWillStartActivity.putExtra("Movie", clickedMovie);
+            startActivity(intentThatWillStartActivity);
         });
     }
 
@@ -66,20 +66,20 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.pop_movies) {
-            getSupportActionBar().setTitle("Popular Movies");
-            refreshList(mPopularList);
+            getSupportActionBar().setTitle(R.string.pop_movie_text);
+            refreshList(mPopularMovieList);
         }
         if (id == R.id.top_movies) {
-            getSupportActionBar().setTitle("Top Rated Movies");
-            refreshList(mTopRatedList);
+            getSupportActionBar().setTitle(R.string.top_movie_text);
+            refreshList(mTopRatedMovieList);
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void refreshList(ArrayList<Movie> list) {
-        MovieAdapter adapter = new MovieAdapter(MainActivity.this, list);
+    private void refreshList(ArrayList<Movie> movieArrayList) {
+        MovieAdapter mMovieAdapter = new MovieAdapter(MainActivity.this, movieArrayList);
         mGridView.invalidateViews();
-        mGridView.setAdapter(adapter);
+        mGridView.setAdapter(mMovieAdapter);
     }
 
 
@@ -88,16 +88,16 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            popularMoviesURL = "https://api.themoviedb.org/3/movie/popular?api_key="+YOUR_API_KEY;
+            mPopularMoviesURL = "https://api.themoviedb.org/3/movie/popular?api_key="+YOUR_API_KEY;
 
-            topRatedMoviesURL = "https://api.themoviedb.org/3/movie/top_rated?api_key="+YOUR_API_KEY;
+            mTopRatedMoviesURL = "https://api.themoviedb.org/3/movie/top_rated?api_key="+YOUR_API_KEY;
 
-            mPopularList = new ArrayList<>();
-            mTopRatedList = new ArrayList<>();
+            mPopularMovieList = new ArrayList<>();
+            mTopRatedMovieList = new ArrayList<>();
             try {
                 if (NetworkUtils.networkStatus(MainActivity.this)){
-                    mPopularList = NetworkUtils.fetchData(popularMoviesURL);
-                    mTopRatedList = NetworkUtils.fetchData(topRatedMoviesURL);
+                    mPopularMovieList = NetworkUtils.fetchData(mPopularMoviesURL);
+                    mTopRatedMovieList = NetworkUtils.fetchData(mTopRatedMoviesURL);
 
                 } else {
                     Toast.makeText(MainActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            refreshList(mPopularList);
+            refreshList(mPopularMovieList);
             mProgressBar.setVisibility(View.INVISIBLE);
         }
     }

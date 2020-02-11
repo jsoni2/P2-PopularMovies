@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
 
@@ -15,9 +15,9 @@
             android:id="@+id/movie_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/activity_vertical_margin"
-            android:paddingLeft="@dimen/activity_vertical_margin"
-            android:paddingRight="@dimen/activity_vertical_margin"
+            android:paddingTop="@dimen/activity_margin"
+            android:paddingLeft="@dimen/activity_margin"
+            android:paddingRight="@dimen/activity_margin"
             android:textAppearance="?android:textAppearanceLarge" />
 
 
@@ -25,9 +25,9 @@
             android:id="@+id/movie_released"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/activity_vertical_margin"
-            android:paddingRight="@dimen/activity_vertical_margin"
-            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_margin"
+            android:paddingRight="@dimen/activity_margin"
+            android:paddingBottom="@dimen/activity_margin"
             android:textAppearance="?android:textAppearanceMedium" />
 
 
@@ -35,20 +35,21 @@
             android:id="@+id/movie_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/activity_vertical_margin"
+            android:padding="@dimen/activity_margin"
             android:textAppearance="?android:textAppearanceMedium" />
 
         <TextView
             android:id="@+id/movie_synopsis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/activity_vertical_margin" />
+            android:padding="@dimen/activity_margin" />
 
         <ImageView
             android:id="@+id/movie_poster"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:adjustViewBounds="true" />
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/movie_poster_cd" />
 
     </LinearLayout>
 </ScrollView>

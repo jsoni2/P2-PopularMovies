@@ -18,6 +18,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class NetworkUtils {
+
     private static final String TAG = NetworkUtils.class.getSimpleName();
 
     public static ArrayList<Movie> fetchData(String url) throws IOException {
@@ -47,24 +48,24 @@ public class NetworkUtils {
             JSONArray resultArray = mainObject.getJSONArray("results"); //Getting the results object
             for (int i = 0; i < resultArray.length(); i++) {
                 JSONObject jsonObject = resultArray.getJSONObject(i);
-                Movie movie = new Movie();
+                Movie mMovie = new Movie();
 
-                movie.setId(jsonObject.getInt("id"));
-                movie.setVoteAverage(jsonObject.getInt("vote_average"));
-                movie.setVoteCount(jsonObject.getInt("vote_count"));
-                movie.setOriginalTitle(jsonObject.optString("original_title"));
-                movie.setTitle(jsonObject.optString("title"));
-                movie.setPopularity(jsonObject.getDouble("popularity"));
-                movie.setBackdropPath(jsonObject.optString("backdrop_path"));
-                movie.setOverview(jsonObject.optString("overview"));
-                movie.setReleaseDate(jsonObject.optString("release_date"));
-                movie.setPosterPath(jsonObject.optString("poster_path"));
+                mMovie.setmId(jsonObject.getInt("id"));
+                mMovie.setmVoteAverage(jsonObject.getInt("vote_average"));
+                mMovie.setmVoteCount(jsonObject.getInt("vote_count"));
+                mMovie.setmOriginalTitle(jsonObject.optString("original_title"));
+                mMovie.setmTitle(jsonObject.optString("title"));
+                mMovie.setmPopularity(jsonObject.getDouble("popularity"));
+                mMovie.setmBackdropPath(jsonObject.optString("backdrop_path"));
+                mMovie.setmOverview(jsonObject.optString("overview"));
+                mMovie.setmReleaseDate(jsonObject.optString("release_date"));
+                mMovie.setmPosterPath(jsonObject.optString("poster_path"));
 
-                mMovieList.add(movie);
+                mMovieList.add(mMovie);
             }
         } catch (JSONException e) {
             e.printStackTrace();
-            Log.e(TAG, "Erro occurred during JSON Parsing", e);
+            Log.e(TAG, "Error occurred during JSON Parsing", e);
         }
     }
 

@@ -3,114 +3,114 @@ package com.janak.popularmovies.model;
 import java.io.Serializable;
 
 public class Movie implements Serializable {
-    private int id;
-    private  int voteAverage;
-    private int voteCount;
-    private String originalTitle;
-    private String title;
-    private double popularity;
-    private String backdropPath;
-    private String overview;
-    private String releaseDate;
-    private String posterPath;
+    private int mId;
+    private  int mVoteAverage;
+    private int mVoteCount;
+    private String mOriginalTitle;
+    private String mTitle;
+    private double mPopularity;
+    private String mBackdropPath;
+    private String mOverview;
+    private String mReleaseDate;
+    private String mPosterPath;
 
-    public int getId() {
-        return id;
+    public int getmId() {
+        return mId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setmId(int mId) {
+        this.mId = mId;
     }
 
-    public int getVoteAverage() {
-        return voteAverage;
+    public int getmVoteAverage() {
+        return mVoteAverage;
     }
 
-    public void setVoteAverage(int voteAverage) {
-        this.voteAverage = voteAverage;
+    public void setmVoteAverage(int mVoteAverage) {
+        this.mVoteAverage = mVoteAverage;
     }
 
-    public int getVoteCount() {
-        return voteCount;
+    public int getmVoteCount() {
+        return mVoteCount;
     }
 
-    public void setVoteCount(int voteCount) {
-        this.voteCount = voteCount;
+    public void setmVoteCount(int mVoteCount) {
+        this.mVoteCount = mVoteCount;
     }
 
-    public String getOriginalTitle() {
-        return originalTitle;
+    public String getmOriginalTitle() {
+        return mOriginalTitle;
     }
 
-    public void setOriginalTitle(String originalTitle) {
-        this.originalTitle = originalTitle;
+    public void setmOriginalTitle(String mOriginalTitle) {
+        this.mOriginalTitle = mOriginalTitle;
     }
 
-    public String getTitle() {
-        return title;
+    public String getmTitle() {
+        return mTitle;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setmTitle(String mTitle) {
+        this.mTitle = mTitle;
     }
 
-    public double getPopularity() {
-        return popularity;
+    public double getmPopularity() {
+        return mPopularity;
     }
 
-    public void setPopularity(double popularity) {
-        this.popularity = popularity;
+    public void setmPopularity(double mPopularity) {
+        this.mPopularity = mPopularity;
     }
 
-    public String getBackdropPath() {
-        return backdropPath;
+    public String getmBackdropPath() {
+        return mBackdropPath;
     }
 
-    public void setBackdropPath(String backdropPath) {
-        this.backdropPath = backdropPath;
+    public void setmBackdropPath(String mBackdropPath) {
+        this.mBackdropPath = mBackdropPath;
     }
 
-    public String getOverview() {
-        return overview;
+    public String getmOverview() {
+        return mOverview;
     }
 
-    public void setOverview(String overview) {
-        this.overview = overview;
+    public void setmOverview(String mOverview) {
+        this.mOverview = mOverview;
     }
 
-    public String getReleaseDate() {
-        return releaseDate;
+    public String getmReleaseDate() {
+        return mReleaseDate;
     }
 
-    public void setReleaseDate(String releaseDate) {
-        this.releaseDate = releaseDate;
+    public void setmReleaseDate(String mReleaseDate) {
+        this.mReleaseDate = mReleaseDate;
     }
 
-    public String getPosterPath() {
-        return posterPath;
+    public String getmPosterPath() {
+        return mPosterPath;
     }
 
-    public void setPosterPath(String posterPath) {
-        this.posterPath = posterPath;
+    public void setmPosterPath(String mPosterPath) {
+        this.mPosterPath = mPosterPath;
     }
 
     public String getReleaseYear() {
-        return this.releaseDate.split("-")[0];
+        return this.mReleaseDate.split("-")[0];
     }
 
     @Override
     public String toString() {
         return "{\"Movie\":{"
-                + "\"id\":\"" + id + "\""
-                + ", \"voteAverage\":\"" + voteAverage + "\""
-                + ", \"voteCount\":\"" + voteCount + "\""
-                + ", \"originalTitle\":\"" + originalTitle + "\""
-                + ", \"title\":\"" + title + "\""
-                + ", \"popularity\":\"" + popularity + "\""
-                + ", \"backdropPath\":\"" + backdropPath + "\""
-                + ", \"overview\":\"" + overview + "\""
-                + ", \"releaseDate\":\"" + releaseDate + "\""
-                + ", \"posterPath\":\"" + posterPath + "\""
+                + "\"mId\":\"" + mId + "\""
+                + ", \"mVoteAverage\":\"" + mVoteAverage + "\""
+                + ", \"mVoteCount\":\"" + mVoteCount + "\""
+                + ", \"mOriginalTitle\":\"" + mOriginalTitle + "\""
+                + ", \"mTitle\":\"" + mTitle + "\""
+                + ", \"mPopularity\":\"" + mPopularity + "\""
+                + ", \"mBackdropPath\":\"" + mBackdropPath + "\""
+                + ", \"mOverview\":\"" + mOverview + "\""
+                + ", \"mReleaseDate\":\"" + mReleaseDate + "\""
+                + ", \"mPosterPath\":\"" + mPosterPath + "\""
                 + "}}";
     }
 }
